@@ -1,48 +1,48 @@
-svg.radar-chart
+svg.radar-badge
 {
 }
 
-svg.radar-chart circle.radar-bg
+svg.radar-badge circle.radar-bg
 {
 	fill: black;
 	stroke: #999;
 	stroke-width: 2;
 }
 
-svg.radar-chart g.radar-levels
+svg.radar-badge g.radar-levels
 {
 	fill: none;
 	stroke: white;
 	stroke-width: 1;
 }
 
-svg.radar-chart circle.radar-centerdot
+svg.radar-badge circle.radar-centerdot
 {
 	fill: white;
 }
 
-svg.radar-chart g.radar-labels
+svg.radar-badge g.radar-labels
 {
 	fill: black;
 	font-size: 16px;
 }
 
-svg.radar-chart g.radar-labels text.left
+svg.radar-badge g.radar-labels text.left
 {
 	text-anchor: start;
 }
 
-svg.radar-chart g.radar-labels text.right
+svg.radar-badge g.radar-labels text.right
 {
 	text-anchor: end;
 }
 
-svg.radar-chart g.radar-labels text.middle
+svg.radar-badge g.radar-labels text.middle
 {
 	text-anchor: middle;
 }
 
-svg.radar-chart path.radar-chartset
+svg.radar-badge path.radar-badgeset
 {
 	stroke-linejoin: round;
 	fill: yellow;
@@ -51,7 +51,7 @@ svg.radar-chart path.radar-chartset
 	opacity: 0.7;
 }
 
-svg.radar-chart g.radar-points
+svg.radar-badge g.radar-points
 {
 	fill: #B3B00C;
 	stroke: #fff;
@@ -59,7 +59,7 @@ svg.radar-chart g.radar-points
 	opacity: 0.7;
 }
 
-svg.radar-chart .radar_highlight
+svg.radar-badge .radar_highlight
 {
 	fill: red;
 }

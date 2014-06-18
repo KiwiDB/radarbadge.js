@@ -14,8 +14,7 @@
     $.fn.RadarBadge = function(options) {
 
 		//This code exposes the functions in the commands object
-		if (typeof arguments[0] === 'string')
-		{
+		if (typeof arguments[0] === 'string') {
 			var property = arguments[1];
 			var args = Array.prototype.slice.call(arguments);
 			args.splice(0, 1);
@@ -26,15 +25,13 @@
 			return false;
 		}
 		//Normal path for the plugin
-		else
-		{
+		else {
 			return init.apply(this, arguments);
 		}
     };
 
     //Prepare for the creation of a chart display
-    function init(options, ex)
-    {
+    function init(options, ex) {
     	//Handle the array of SVG attributes separately
     	var attrs = $.extend({}, $.fn.RadarBadge.defaults.svgAttrs, options.svgAttrs ? options.svgAttrs : {});
 
@@ -49,8 +46,7 @@
 			var settings = $.meta ? $.extend({}, settings_gl, $this.data()) : settings_gl;
 
 			//Create the hidden settings element
-			if((!ex || !ex.dontsave) && (settings.saveData))
-			{
+			if((!ex || !ex.dontsave) && (settings.saveData)) {
 				var s = $("<div>")
 						.addClass("radardata");
 
@@ -58,8 +54,7 @@
 				e.append(s);
 			}
 			//Load the hidden settings element and merge it with options passed to the plugin
-			else if(ex && ex.loadsave)
-			{
+			else if(ex && ex.loadsave) {
 				var d = getSavedData(e);
 
 				if(d)
@@ -105,8 +100,7 @@
     }
 
     //Draws the static parts of the chart -- background and levels circles
-    function draw(e, o)
-    {
+    function draw(e, o) {
     	var svgNS = "http://www.w3.org/2000/svg";
 
     	var w = parseInt(e.attr("width"));
@@ -138,8 +132,7 @@
 	    myG.setAttributeNS(null,"class","radar-levels");
 
 	    //Levels circles
-	    for(i=0; i < o.maxLevels; i++)
-	    {
+	    for(i=0; i < o.maxLevels; i++) {
 	    	myCircle = document.createElementNS(svgNS,"circle");
 		    myCircle.setAttributeNS(null,"cx",circle_center[0]);
 		    myCircle.setAttributeNS(null,"cy",circle_center[1]);
@@ -151,8 +144,7 @@
 	    e.append(myG);
 
 	    //Center Dot
-	    if(o.useCenterDot)
-	    {
+	    if(o.useCenterDot) {
 		    myCircle = document.createElementNS(svgNS,"circle");
 		    myCircle.setAttributeNS(null,"class","radar-centerdot");
 		    myCircle.setAttributeNS(null,"cx",250);
@@ -164,8 +156,7 @@
 
 	    //Calculate mouseover ranges for the chart
 	    data.moRanges = [];
-	    for(var i=1; i<=o.items.length; i++)
-	    {
+	    for(var i=1; i<=o.items.length; i++) {
 	    	var a = {};
 	    	a = calc_morange(i, o.items.length);
 	    	a.count = i % o.items.length;
@@ -175,8 +166,7 @@
     };
 
     //Draw the chart itself (all animations are set not to run)
-    function draw_chart(e, o)
-    {
+    function draw_chart(e, o) {
     	//Check if this browser supports SVG animation
     	var ani = document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Animation", "1.0");
 
@@ -185,8 +175,7 @@
     	//Calculate needed positions around the circle
     	var circle_positions = [];
 
-		for(var i=0; i < o.items.length; i++)
-		{
+		for(var i=0; i < o.items.length; i++) {
 			var chart = {};
 
 			//How far around the circle is this item
@@ -209,15 +198,13 @@
 		}
 
 		//Create path string and draw text
-		if(circle_positions[0])
-		{
+		if(circle_positions[0]) {
 			//Starting positions for the path_point path (the final chart) and the path_start path (the starting point of the graph before the animation)
 			var path_point = "M" + (circle_positions[0].path_point[0]) + " " + (circle_positions[0].path_point[1]);
 			var path_start = "M" + data.circle.center[0] + " " + data.circle.center[1];
 
 			//Create a group for point dots, but don't append it until after the chart is written (to make sure point dots are on top of the chart)
-			if(o.usePointDots)
-			{
+			if(o.usePointDots) {
 				var pointG = document.createElementNS(svgNS, "g");
 				pointG.setAttributeNS(null, "class", "radar-points");
 			}
@@ -227,8 +214,7 @@
 			textG.setAttributeNS(null, "class", "radar-labels");
 			textG.setAttributeNS(null, "style", "opacity:0");
 
-			if(ani) 
-			{
+			if(ani) {
 				//This is the fade animation for text
 				myAnimation = document.createElementNS(svgNS, "animate");
 					myAnimation.setAttributeNS(null, "begin", "infinite");
@@ -246,11 +232,9 @@
 		    else
 		    	textG.setAttributeNS(null, "style", "opacity:1");
 
-			for(var i=0; i < circle_positions.length; i++)
-			{
+			for(var i=0; i < circle_positions.length; i++) {
 				//Add this point to the path
-				if(i != 0)
-				{
+				if(i != 0) {
 					path_point += " L" + (circle_positions[i].path_point[0]) + " " + (circle_positions[i].path_point[1]);
 					path_start += " L" + data.circle.center[0] + " " + data.circle.center[1];
 				}
@@ -275,13 +259,11 @@
 
 
 	    		//Point Circle
-	    		if(o.usePointDots)
-		    	{
+	    		if(o.usePointDots) {
 					myCircle = document.createElementNS(svgNS,"circle");
 				    myCircle.setAttributeNS(null, "r", o.pointDotsSize);
 
-				    if(ani)
-				    {
+				    if(ani) {
 				    	//These are the animations that move the point circles along with the path, out from the center
 			    		myAnimation = document.createElementNS(svgNS, "animate");
 				    		myAnimation.setAttributeNS(null, "attributeName", "cx");
@@ -309,8 +291,7 @@
 
 		    				myCircle.appendChild(myAnimation);
 		    		}
-		    		else
-		    		{
+		    		else {
 		    			myCircle.setAttributeNS(null,"cx",circle_positions[i].path_point[0]);
 				    	myCircle.setAttributeNS(null,"cy",circle_positions[i].path_point[1]);
 		    		}
@@ -328,10 +309,9 @@
 
 			//Draw the chart
 			myCircle = document.createElementNS(svgNS,"path");
-			myCircle.setAttributeNS(null,"class","radar-chartset");
+			myCircle.setAttributeNS(null,"class","radar-badgeset");
 
-				if(ani)
-				{
+				if(ani) {
 					myCircle.setAttributeNS(null,"d",path_start);
 
 					//This is the animation that grows the path from the center
@@ -348,8 +328,7 @@
 
 			    		myCircle.appendChild(myAnimation);
 			    }
-			    else
-			    {
+			    else {
 			    	myCircle.setAttributeNS(null,"d",path_point);
 			    }
 
@@ -362,12 +341,10 @@
     };
 
     //Read and return saved data
-    function getSavedData(e)
-    {
+    function getSavedData(e) {
     	var ddiv = e.find(".radardata");
 
-    	if(ddiv)
-    	{
+    	if(ddiv) {
 			var d = ddiv.html();
 
 			try
@@ -382,12 +359,10 @@
     }
 
     //Overwrite existing saved data with new data
-    function saveData(e, d)
-    {
+    function saveData(e, d) {
     	var ddiv = e.find(".radardata");
 
-    	if(ddiv)
-    	{
+    	if(ddiv) {
     		ddiv.html(JSON.stringify(d));
     		return true;
     	}
@@ -396,8 +371,7 @@
     }
 
     //Trigger the chart to animate
-    function animate(o)
-    {
+    function animate(o) {
     	this.each(function() {
     		var e = $(this);
 	    	
@@ -410,17 +384,14 @@
 
     //This function allows the display to be destroyed and rebuilt with new options
     //Items waiting to be added and deleted are evaluated here
-    function rebuild(o)
-    {
+    function rebuild(o) {
     	return this.each(function() {
     		var d = getSavedData($(this));
 
     		//We only need to look at saved data if data has been saved
-    		if(d)
-    		{
+    		if(d) {
 	    		//Add to the items array
-	    		for(i in d.newItems)
-	    		{
+	    		for(i in d.newItems) {
 	    			d.items.push(d.newItems[i]);
 	    		}
 
@@ -429,12 +400,9 @@
 	    		//Delete from the items array
 	    		var dontadd = [];
 
-	    		for(i in d.delItems)
-	    		{
-	    			for(j in d.items)
-	    			{
-	    				if(d.items[j].id == d.delItems[i])
-	    				{
+	    		for(i in d.delItems) {
+	    			for(j in d.items) {
+	    				if(d.items[j].id == d.delItems[i]) {
 	    					dontadd.push(j);
 	    				}
 	    			}
@@ -444,8 +412,7 @@
 
 	    		var ni = [];
 
-	    		for(i in d.items)
-	    		{
+	    		for(i in d.items) {
 	    			if($.inArray(i, dontadd) == -1)
 	    				ni.push(d.items[i]);
 	    		}
@@ -461,8 +428,7 @@
     }
 
     //Delete all children of the container (SVG and saved data)
-    function destroy()
-    {
+    function destroy() {
     	return this.each(function() {
     		$(this).find("*").remove();
     	});
@@ -470,13 +436,11 @@
 
     //Allows items to be added to the item array at runtime (this is only available if options.saveData was true at initial creation or rebuild)
     //Note - we don't add to the item array directly so that calculations based on the number of items is still accurate; items are added when a rebuild is triggered
-    function addItem(i)
-    {
+    function addItem(i) {
     	return this.each(function() {
     		var d = getSavedData($(this));
 
-    		if(d)
-    		{
+    		if(d) {
 	    		for(it in i)
 	    			d.newItems.push(i[it]);
 
@@ -487,13 +451,11 @@
 
     //Allows items to be deleted from the item array at runtime (this is only available if options.saveData was true at initial creation or rebuild)
     //Note - we don't remove from the item array directly so that calculations based on the number of items is still accurate; items are added when a rebuild is triggered
-    function deleteItem(i)
-    {
+    function deleteItem(i) {
     	return this.each(function() {
     		var d = getSavedData($(this));
 
-    		if(d)
-    		{
+    		if(d) {
 	    		for(it in i)
 	    			d.delItems.push(i[it]);
 
@@ -503,8 +465,7 @@
     }
 
     //This function calculates the degree range within the circle for each item
-    function calc_morange(i, n)
-    {
+    function calc_morange(i, n) {
     	var sa = (360 / n) * i;
 
     	return {
@@ -515,8 +476,7 @@
 
     //This function receives an x and y coordinate (relative to the center of the circle) and returns the index of the item that position relates to.
     //This function can be overwriten using the coToIndx option
-    function coToIndx(x, y)
-    {
+    function coToIndx(x, y) {
     	var conv = (180 / Math.PI);
 
     	//Move around the circle
@@ -532,20 +492,15 @@
         //Figure out which section of the chart I'm in
         ind = false;
 
-        for(sec in data.moRanges)
-        {
-        	if(data.moRanges[sec].s < data.moRanges[sec].e)
-        	{
-	        	if((a >= data.moRanges[sec].s) && (a < data.moRanges[sec].e))
-	        	{
+        for(sec in data.moRanges) {
+        	if(data.moRanges[sec].s < data.moRanges[sec].e) {
+	        	if((a >= data.moRanges[sec].s) && (a < data.moRanges[sec].e)) {
 	        		ind = data.moRanges[sec].count;
 	        		break;
 	        	}
 	        }
-	        else
-	        {
-	        	if((a >= data.moRanges[sec].s && a <= 360) || (a < data.moRanges[sec].e && a >= 0))
-	        	{
+	        else {
+	        	if((a >= data.moRanges[sec].s && a <= 360) || (a < data.moRanges[sec].e && a >= 0)) {
 	        		ind = data.moRanges[sec].count;
 	        		break;
 	        	}
@@ -556,8 +511,7 @@
     };
 
     //Wrapper for the mouseover function
-    function mo(e)
-    {
+    function mo(e) {
     	//Get the x-y coordinate for the mouse
         t = $(e.target);
 
@@ -580,8 +534,7 @@
     };
 
     //Wrapper for the click function
-    function clk(e)
-    {
+    function clk(e) {
     	//Get the x-y coordinate for the mouse
         t = $(e.target);
 
@@ -614,7 +567,7 @@
     	delItems: [],	//Used to hold items deleted by the "delete" method
     	maxLevels: 5,	//The level representing the outside of the circle
     	svgAttrs: {		//Attributes to add inline on the svg tag. (Attributes passed will be merged with the default settings before being applied)
-    		"class": "radar-chart",
+    		"class": "radar-badge",
     		width: 500,
     		height: 500
     	},
