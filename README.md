@@ -17,8 +17,8 @@ First, include the files for jQuery and the RadarBadge plugin
 
 ```html
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<link href="jquery.RadarBadge.min.css" rel="stylesheet">
-<script type="text/javascript" src="jquery.RadarBadge.min.js"></script>
+<link href="jquery.radarbadge.min.css" rel="stylesheet">
+<script type="text/javascript" src="jquery.radarbadge.min.js"></script>
 ```
     
 The minified versions (.min.js and .min.css) will perform better, so using them is preferred. The standard non-minified files (.js and .css) are included for reference and to allow further development.
