@@ -8,6 +8,7 @@ This plugin can be simple, but by passing custom options it can be used in compl
 
 > This version 1.0 of the plugin has a few caveats to keep in mind:
 > * You must have an inline width and height set on the SVG tag (using the svgAttrs option). The current version will not evaulate the height and width of the parent element to determine size.
+> * SVG animation support is determined by `document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Animation", "1.0");` and are disabled if not supported. This method is not always accurate (it reports lack of support for some browsers that do support it), and I will be exploring other methods for getting this information.
 > * If you use the `rebuild` method, you must pass all custom callbacks again, even if `saveData` is enabled.
 
 ## Getting started
