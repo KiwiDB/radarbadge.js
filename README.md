@@ -1,32 +1,32 @@
-radarbadge.js
+RadarBadge.js
 =============
 
-# Radar Badge documentation
-Radar Badge is a jQuery plugin which creates a modified radar chart meant for displaying comparitive skills, traits or any other items. Each item passed is given a numeric rating which is used to generate the chart. You see these charts in video games sometimes to display the strengths and weaknesses of different characters.
+# RadarBadge documentation
+RadarBadge is a jQuery plugin which creates a modified radar chart meant for displaying comparitive skills, traits or any other items. Each item passed is given a numeric rating which is used to generate the chart. You see these charts in video games sometimes to display the strengths and weaknesses of different characters.
 
 This plugin can be simple, but by passing custom options it can be used in complex ways.
 
 ## Getting started
 
-First, include the files for jQuery and the Radar Badge plugin
+First, include the files for jQuery and the RadarBadge plugin
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <link href="jquery.radarbadge.min.css" rel="stylesheet">
-    <script type="text/javascript" src="jquery.radarbadge.min.js"></script>
+    <link href="jquery.RadarBadge.min.css" rel="stylesheet">
+    <script type="text/javascript" src="jquery.RadarBadge.min.js"></script>
     
 The minified versions (.min.js and .min.css) will perform better, so using them is preferred. The standard non-minified files (.js and .css) are included for reference and to allow further development.
     
-Once included, you need only to target elements using a jQuery selector and invoke the radarbadge plugin.
+Once included, you need only to target elements using a jQuery selector and invoke the RadarBadge plugin.
     
 ### Minimal setup
 
-    $("myselector").radarbadge(options);
+    $("myselector").RadarBadge(options);
 
 options is an object of customizations for your chart. Only one option is needed for a meaningful chart -- "items", an array of items to display on the chart. Each is an object containing three elements -- "id" (an ID used internally by the plugin and used in classes, allowing you to target elements with CSS easily), "label" (the text to display on the chart), and "level" (the rating for this item; by default, the chart uses levels 0-5, with 5 representing the maximum).
 
 For example:
 
-    $("myselector").radarbadge({
+    $("myselector").RadarBadge({
       items: [
         {"id": "item1", "label": "Item One", "level": 3},
         {"id": "item2", "label": "Item Two", "level": 5},
@@ -62,37 +62,37 @@ This option sets the maximum number of levels to display within the chart. The m
 
 This option represents the portion of the size of the SVG element that will be used as the radius for the chart circle. Setting this to 0.5 will cause the chart to span the full height or width of the SVG (whichever is smaller). It is up to you to ensure that your item labels and chart fit in the SVG.
 
-    $("myselector").RadarBridge({circlePortion: 0.5});
+    $("myselector").RadarBadge({circlePortion: 0.5});
     
 #### useCenterDot (default: true)
 
 This option determines if a dot is drawn in the center of the chart.
 
-    $("myselector").RadarBridge({useCenterDot: false});
+    $("myselector").RadarBadge({useCenterDot: false});
     
 #### centerDotSize (default: 3)
 
 This option represents the radius of the center dot, in pixels. (useCenterDot must be set to true for this to have an effect)
 
-    $("myselector").RadarBridge({centerDotSize: 5});
+    $("myselector").RadarBadge({centerDotSize: 5});
     
 #### textDistance (default: 1.25)
 
 This option is used to determine the position of item labels relative to the perimeter of the circle. The position is determined by taking a position on the circle perimeter and multiplying it by this option. (The higher this option is, the further from the circle the item labels will display.) It is up to you to ensure that your item labels and chart fit in the SVG.
 
-    $("myselector").RadarBridge({textDistance: 1.5});
+    $("myselector").RadarBadge({textDistance: 1.5});
     
 #### usePointDots (default: true)
 
 This option determines if a dot is drawn at each vertex of the chart.
 
-  $("myselector").RadarBridge({usePointDots: false});
+  $("myselector").RadarBadge({usePointDots: false});
   
 #### pointDotsSize (default: 3)
 
 This option represents the radius of the points dots, in pixels. (usePointDots must be set to true for this to have an effect)
 
-    $("myselector").RadarBridge({pointDotsSize: 5});
+    $("myselector").RadarBadge({pointDotsSize: 5});
     
 #### autoAnimate (default: true)
 
@@ -100,7 +100,7 @@ If set to true, the chart will begin its display animation immediately; if set t
 
 If you want to have the chart display without an animation, set this option to true and "animationDuration" to 1.
 
-    $("myselector").RadarBridge({autoAnimate: false});
+    $("myselector").RadarBadge({autoAnimate: false});
     
 #### animationDuration (default: 1000)
 
@@ -108,13 +108,13 @@ Specifies the length of the animation in milliseconds.
 
 If you want to have the chart display without an animation, set this option to 1.
 
-    $("myselector").RadarBridge({animationDuration: 2000});
+    $("myselector").RadarBadge({animationDuration: 2000});
     
 #### saveData (default: false)
 
 If set to true, the plugin will save the options you set. You must enable this option if you wish to use the "add" or "delete" API methods. If you use the "restart" API method, setting this option to true will allow you not to pass your options again, instead needing to pass only the options you wish to change. (See the documentation for the API methods for more information)
 
-    $("myselector").RadarBridge({saveData: true});
+    $("myselector").RadarBadge({saveData: true});
     
 ### Callbacks
 
@@ -128,7 +128,7 @@ This is a function to be called before any processing is done on the chart.
       ...
     }
     
-    $("myselector").RadarBridge({start: myFunc});
+    $("myselector").RadarBadge({start: myFunc});
     
 #### mouseover
 
@@ -140,7 +140,7 @@ The pointer-to-item calculation is handled by the coToIndx function, which can b
       ...
     }
     
-    $("myselector").RadarBridge({mouseover: myFunc});
+    $("myselector").RadarBadge({mouseover: myFunc});
     
 #### mouseout
 
@@ -150,7 +150,7 @@ This is a function to be called whenever the mouse is moved out of the SVG eleme
       ...
     }
     
-    $("myselector").RadarBridge({mouseout: myFunc});
+    $("myselector").RadarBadge({mouseout: myFunc});
     
 #### click
 
@@ -162,7 +162,7 @@ The pointer-to-item calculation is handled by the coToIndx function, which can b
       ...
     }
     
-    $("myselector").RadarBridge({click: myFunc});
+    $("myselector").RadarBadge({click: myFunc});
     
 #### coToIndx
 
@@ -172,7 +172,7 @@ This function receives an x and y coordinate, and must return one of two things 
       ...
     }
     
-    $("myselector").RadarBridge({coToIndx: myFunc});
+    $("myselector").RadarBadge({coToIndx: myFunc});
     
 ## API
 
@@ -184,7 +184,7 @@ This forces the chart to animate. If the chart has already animated when this is
 
 There are no options to pass to this method. The length of the animation is passed during the initial creation of the chart, or when using the restart method.
 
-    $("myselector").RadarBridge("animate");
+    $("myselector").RadarBadge("animate");
     
 #### add
 
@@ -194,7 +194,7 @@ This method allows you to add a new item or items to the chart. The method must 
 
 The new items will not be displayed on the chart until the rebuild method has been invoked.
 
-    $("myselector").RadarBridge("add", [
+    $("myselector").RadarBadge("add", [
       {"id": "item4", "label": "Item Four", "level": 1},
       {"id": "item5", "label": "Item Five", "level": 3}
     }]);
@@ -207,7 +207,7 @@ This method allows you to remove an item or items from the chart. The method mus
 
 The items will not be removed from the display until the rebuild method has been invoked.
 
-    $("myselector").RadarBridge("delete", ["item2", "item3"]);
+    $("myselector").RadarBadge("delete", ["item2", "item3"]);
     
 #### rebuild
 
@@ -217,13 +217,13 @@ This method will destroy your chart and recreate it, taking a new set of options
 
 > IMPORTANT NOTE - whether or not saveData is enabled, you must repass any callback functions here; they will not be remembered from the initial chart creation.
 
-    $("myselector").RadarBridge("rebuild", options);
+    $("myselector").RadarBadge("rebuild", options);
     
 #### destroy
 
 This method destroys the SVG and other elements created by the plugin.
 
-    $("myselector").RadarBridge("destory");
+    $("myselector").RadarBadge("destory");
 
 ## Example
 
