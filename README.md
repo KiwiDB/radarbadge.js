@@ -132,7 +132,7 @@ This is a function to be called before any processing is done on the chart.
     
 #### mouseover
 
-This is a function to be called whenever the mouse is moved over the SVG element. The function receives two arguments -- the event object, and the index of the item the mouse pointer is currently over. (The index is of the items array passed into the initial function call.)
+This is a function to be called whenever the mouse is moved over the SVG element. The function receives two arguments -- the event object, and the item object that was mouseover-ed.
 
 The pointer-to-item calculation is handled by the coToIndx function, which can be overwritten.
 
@@ -154,7 +154,7 @@ This is a function to be called whenever the mouse is moved out of the SVG eleme
     
 #### click
 
-This is a function to be called whenever the SVG element is clicked. The function receives two arguments -- the event object, and the index of the item that was clicked. (The index is of the items array passed into the initial function call.)
+This is a function to be called whenever the SVG element is clicked. The function receives two arguments -- the event object, and the item object that was clicked.
 
 The pointer-to-item calculation is handled by the coToIndx function, which can be overwritten.
 
@@ -224,3 +224,25 @@ This method will destroy your chart and recreate it, taking a new set of options
 This method destroys the SVG and other elements created by the plugin.
 
     $("myselector").RadarBridge("destory");
+
+## Example
+
+    var items = [
+        {"id": "item1", "label": "Item One", "level": 3},
+        {"id": "item2", "label": "Item Two", "level": 5},
+        {"id": "item3", "label": "Item Three", "level": 2}
+    ];
+        
+    $("myselector").RadarBadge({
+        items: items,
+        centerDotSize: 2,
+        usePointDots: false,
+        autoAnimate: false,
+        saveData: true,
+        click: function(e, i)
+        {
+            alert("You clicked " + i.label + "!");
+        }
+    });
+    
+    $("myselector").RadarBadge("animate");
