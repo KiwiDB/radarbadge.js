@@ -309,7 +309,6 @@ $("myselector").RadarBadge("destory");
 <div id='radarbadge'></div>
 ```
 
-###### Javascript
 ```javascript
 //Javascript
 $(function()
