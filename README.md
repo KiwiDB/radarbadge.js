@@ -24,6 +24,20 @@ First, include the files for jQuery and the RadarBadge plugin
 The minified versions (.min.js and .min.css) will perform better, so using them is preferred. The standard non-minified files (.js and .css) are included for reference and to allow further development.
     
 Once included, you need only to target elements using a jQuery selector and invoke the RadarBadge plugin.
+
+Create an element on your site that you want to use as a container for the plugin.
+
+```html
+<div id='radarbadge'></div>
+```
+
+Then target it with the RadarBadge plugin. Be sure to add the call inside of a document.ready function if necessary!
+
+```javascript
+$(function() {
+    $("#radarbadge").RadarBadge(options);
+});
+```
     
 ### Minimal setup
 
@@ -290,6 +304,12 @@ $("myselector").RadarBadge("destory");
 
 ## Example
 
+###### HTML
+```html
+<div id='radarbadge'></div>
+```
+
+###### Javascript
 ```javascript
 var items = [
     {"id": "item1", "label": "Item One", "level": 3},
@@ -297,7 +317,7 @@ var items = [
     {"id": "item3", "label": "Item Three", "level": 2}
 ];
     
-$("myselector").RadarBadge({
+$("#radarbadge").RadarBadge({
     items: items,
     centerDotSize: 2,
     usePointDots: false,
