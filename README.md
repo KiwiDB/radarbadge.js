@@ -312,23 +312,26 @@ $("myselector").RadarBadge("destory");
 ###### Javascript
 ```javascript
 //Javascript
-var items = [
-    {"id": "item1", "label": "Item One", "level": 3},
-    {"id": "item2", "label": "Item Two", "level": 5},
-    {"id": "item3", "label": "Item Three", "level": 2}
-];
+$(function()
+{
+    var items = [
+        {"id": "item1", "label": "Item One", "level": 3},
+        {"id": "item2", "label": "Item Two", "level": 5},
+        {"id": "item3", "label": "Item Three", "level": 2}
+    ];
     
-$("#radarbadge").RadarBadge({
-    items: items,
-    centerDotSize: 2,
-    usePointDots: false,
-    autoAnimate: false,
-    saveData: true,
-    click: function(e, i)
-    {
-        alert("You clicked " + i.label + "!");
-    }
+    $("#radarbadge").RadarBadge({
+        items: items,
+        centerDotSize: 2,
+        usePointDots: false,
+        autoAnimate: false,
+        saveData: true,
+        click: function(e, i)
+        {
+            alert("You clicked " + i.label + "!");
+        }
+    });
+    
+    $("#radarbadge").RadarBadge("animate");
 });
-
-$("#radarbadge").RadarBadge("animate");
 ```
