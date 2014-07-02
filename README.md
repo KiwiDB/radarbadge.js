@@ -304,13 +304,14 @@ $("myselector").RadarBadge("destory");
 
 ## Example
 
-###### HTML
 ```html
+<!-- HTML -->
 <div id='radarbadge'></div>
 ```
 
 ###### Javascript
 ```javascript
+//Javascript
 var items = [
     {"id": "item1", "label": "Item One", "level": 3},
     {"id": "item2", "label": "Item Two", "level": 5},
@@ -329,5 +330,5 @@ $("#radarbadge").RadarBadge({
     }
 });
 
-$("myselector").RadarBadge("animate");
+$("#radarbadge").RadarBadge("animate");
 ```
